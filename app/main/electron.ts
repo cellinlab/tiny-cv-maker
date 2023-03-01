@@ -18,6 +18,7 @@ function createWindow () {
 
   if (isDev()) {
     mainWindow.loadURL('http://localhost:7001');
+    mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`);
   }
