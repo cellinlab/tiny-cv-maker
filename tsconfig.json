@@ -16,6 +16,8 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["./app/renderer/*"],
+      "@assets/*": ["./assets/*"],
+      "@common/*": ["./app/renderer/common/*"]
     },
     "moduleResolution": "node",
   },
