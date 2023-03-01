@@ -1,6 +1,7 @@
-const path = require('path');
+import path from 'path';
+import { app, BrowserWindow, ipcMain } from 'electron';
 
-const { app, BrowserWindow } = require('electron');
+const ROOT_PATH = path.join(app.getAppPath(), '../');
 
 function isDev () {
   return process.env.NODE_ENV === 'development';
@@ -32,4 +33,8 @@ app.whenReady().then(() => {
       createWindow();
     }
   })
+});
+
+ipcMain.on('get-root-path', (event, arg) => {
+  event.reply('reply-root-path', ROOT_PATH);
 });
