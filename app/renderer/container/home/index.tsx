@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 import { shell } from 'electron';
 
@@ -11,6 +12,7 @@ import './index.less';
 import Logo from '@assets/logo.png';
 
 function Home () {
+  const appName = useSelector((state: any) => state.globalModel.appName);
   const history = useHistory();
 
   const onRouterToLink = (router: TSRouter.Item) => {
@@ -25,7 +27,7 @@ function Home () {
     <div styleName='home'>
       <div styleName='container'>
         <img src={Logo} alt="" styleName='logo' />
-        <div styleName='title'>Tiny CV Maker</div>
+        <div styleName='title'>{appName}</div>
         <div styleName='tips'>A template resume making platform to make your resume stand out ~</div>
         <div styleName='action'>
           {
