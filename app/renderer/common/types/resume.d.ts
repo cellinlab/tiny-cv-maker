@@ -111,6 +111,6 @@ declare namespace TSResume {
     key: string;
     name: string;
     summary: string;
-    require: boolean;
+    require?: boolean;
   }
 }
