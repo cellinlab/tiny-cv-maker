@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import MyScrollBox from '@common/components/MyScrollBox';
 import RESUME_TOOLBAR_LIST from '@common/contants/resume';
+import Messager, { MESSAGE_EVENT_NAME_MAPS } from '@common/messager';
 
 import { onAddToolbar, onRemoveToolbar } from './utils';
 
@@ -81,6 +82,11 @@ function ResumeToolbar () {
                   <div
                     styleName="box"
                     key={toolbar.key}
+                    onClick={() => {
+                      Messager.send(MESSAGE_EVENT_NAME_MAPS.OPEN_FORM_MODAL, {
+                        form_name: toolbar.key,
+                      });
+                    }}
                   >
                     <div styleName="info">
                       <i styleName="icon" />
