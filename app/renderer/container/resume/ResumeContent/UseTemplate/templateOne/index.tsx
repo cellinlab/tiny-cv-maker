@@ -3,6 +3,7 @@
  * @author pengdaokuan
  */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './index.less';
 import Avatar from './components/Avatar';
 import BaseInfo from './components/BaseInfo';
@@ -15,7 +16,12 @@ import Post from './components/Post';
 import Project from './components/Project';
 import Work from './components/Work';
 
+import { RESUME_TOOLBAR_MAPS } from '@common/contants/resume';
+
 function TemplateOne() {
+  const base: TSResume.Base = useSelector((state: any) => state.templateModel.base);
+  const resumeToolbarKeys: string[] = useSelector((state: any) => state.templateModel.resumeToolbarKeys);
+
   // 必须带有id，以方便导出时获取DOM元素内容
   return (
     <div styleName="a4-box">
@@ -28,19 +34,19 @@ function TemplateOne() {
           <div styleName="fillColor" />
           <div styleName="baseData">
             <BaseInfo />
-            <Contact />
-            <Job />
-            <Certificate />
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.contact) && <Contact />}
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.workPrefer) && <Job />}
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.certificate) && <Certificate />}
           </div>
         </div>
         {/* 内容 */}
         <div styleName="center">
-          <Synopsis />
+          {(resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.evaluation) || base?.username) && <Synopsis />}
           <div styleName="listData">
-            <Skill />
-            <Post />
-            <Project />
-            <Work />
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.skill) && <Skill />}
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.schoolExperience) && <Post />}
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.projectExperience) && <Project />}
+            {resumeToolbarKeys.includes(RESUME_TOOLBAR_MAPS.workExperience) && <Work />}
           </div>
         </div>
       </div>
