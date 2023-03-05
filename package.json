@@ -15,6 +15,8 @@
     "@babel/polyfill": "^7.12.1",
     "classnames": "^2.3.1",
     "electron": "^11.1.1",
+    "html2canvas": "^1.0.0",
+    "jspdf": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",

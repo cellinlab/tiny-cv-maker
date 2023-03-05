@@ -205,7 +205,7 @@ function WrapperExperience({ children, dataList, updateDataList }: IProps) {
               isShow: true,
               callback: onDeleteCancel,
             },
-            submitBtn: {
+            confirmBtn: {
               isShow: true,
               callback: onDeleteOk,
             },
@@ -225,7 +225,7 @@ function WrapperExperience({ children, dataList, updateDataList }: IProps) {
                 });
               },
             },
-            submitBtn: {
+            confirmBtn: {
               isShow: true,
               callback: () => {
                 onToggleEditModal({

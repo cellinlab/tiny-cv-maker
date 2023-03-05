@@ -39,7 +39,7 @@ function Project() {
                     {!experience?.projectName && experience?.post && <span>{experience?.post}</span>}
                     {experience?.projectName && experience?.post && (
                       <span>
-                        {experience?.post} - {experience?.post}
+                        {experience?.projectName} - {experience?.post}
                       </span>
                     )}
                   </p>
