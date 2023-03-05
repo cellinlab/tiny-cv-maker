@@ -9,16 +9,17 @@ function Upload ({
   style,
   accept,
   multiple = false,
-  visible = false,
+  visible = true,
   onAfterClick,
   onAfterChange,
 }: TSUpload.Input) {
   const inputSelectorRef = useRef(null);
 
   function onChange (e: any) {
+    console.log('onChange', e);
     const fileList: any = e?.target?.files || [];
 
-    if (e.target && e.target.value === '') {
+    if (e.target.value === '') {
       return;
     }
 

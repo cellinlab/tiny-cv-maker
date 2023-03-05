@@ -4,7 +4,7 @@ declare namespace TSUpload {
     accept?: string;
     multiple?: boolean;
     visible?: boolean;
-    onAfterClick: () => void;
+    onAfterClick?: () => void;
     onAfterChange: (fileList: File[]) => void;
   }
 

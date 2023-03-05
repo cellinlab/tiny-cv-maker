@@ -19,7 +19,7 @@ import Work from './components/Work';
 import { RESUME_TOOLBAR_MAPS } from '@common/contants/resume';
 
 function TemplateOne() {
-  const base: TSResume.Base = useSelector((state: any) => state.templateModel.base);
+  const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
   const resumeToolbarKeys: string[] = useSelector((state: any) => state.templateModel.resumeToolbarKeys);
 
   // 必须带有id，以方便导出时获取DOM元素内容

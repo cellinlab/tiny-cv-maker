@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import MyModal from '@common/components/MyModal';
 import MyInput from '@common/components/MyInput';
+import useUpdateResumeHook from '@src/container/resume/ResumeContent/useUpdateResumeHook';
 
 import './index.less';
 
@@ -11,8 +12,9 @@ interface IProps {
 }
 
 function Personal ({ onClose }: IProps) {
-  const hobby: string = useSelector((state: any) => state.templateModel.hobby);
-  const base: TSResume.Base = useSelector((state: any) => state.templateModel.base);
+  const updateResumeHook = useUpdateResumeHook();
+  const hobby: string = useSelector((state: any) => state.resumeModel.hobby);
+  const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
 
   return (
     <MyModal.Dialog
@@ -30,7 +32,14 @@ function Personal ({ onClose }: IProps) {
             <span styleName="require">*</span>姓 名 ：
           </div>
           <div styleName="right">
-            <MyInput onChange={(e) => {}} value={base?.username || ''} placeholder="请输入姓名" allowClear={true} />
+            <MyInput
+              onChange={(e) => {
+                updateResumeHook('base/username', e.target?.value || '')
+              }}
+              value={base?.username || ''}
+              placeholder="请输入姓名"
+              allowClear={true}
+            />
           </div>
         </div>
         <div styleName="flex">
@@ -38,7 +47,11 @@ function Personal ({ onClose }: IProps) {
             <span styleName="require">*</span>籍 贯 ：
           </div>
           <div styleName="right">
-            <MyInput onChange={(e) => {}} value={base?.hometown || ''} placeholder="请输入籍贯" allowClear={true} />
+            <MyInput
+              onChange={(e) => {
+                updateResumeHook('base/hometown', e.target?.value || '');
+              }}
+              value={base?.hometown || ''} placeholder="请输入籍贯" allowClear={true} />
           </div>
         </div>
         <div styleName="flex">
@@ -51,7 +64,9 @@ function Personal ({ onClose }: IProps) {
           <div styleName="right">
             <MyInput
               type="textarea"
-              onChange={(e) => {}}
+              onChange={(e) => {
+                updateResumeHook('hobby', e.target?.value || '');
+              }}
               rows={5}
               value={hobby || ''}
               placeholder="你有什么特长爱好呢"

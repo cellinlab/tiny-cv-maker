@@ -12,7 +12,7 @@ interface IProps extends TSUpload.Input {
 
 const ImageUpload: React.FC<IProps> = ({
   icon,
-  text,
+  text = 'Upload avatar',
   preventInputManager = false,
   onAfterClick = () => {},
   ...otherProps
@@ -23,7 +23,9 @@ const ImageUpload: React.FC<IProps> = ({
         <div className="my-input-image-upload-input">
           <Upload
             {...otherProps}
-            onAfterClick={onAfterClick}
+            onAfterClick={() => {
+              console.log('onAfterClick');
+            }}
             style={{
               width: '112px',
               height: '152px',

@@ -32,7 +32,7 @@ function MyDialog({
         <div
           styleName='my-dialog-box'
           className={className}
-          style={{ width: width || 750 }}
+          style={{ width: width || 760 }}
           ref={eleRef}
         >
           <div styleName='my-dialog-header'>{title || 'Friendly Tips'}</div>

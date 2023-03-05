@@ -7,11 +7,13 @@ import MyModal from '@common/components/MyModal';
 import MyInput from '@common/components/MyInput';
 import { useSelector } from 'react-redux';
 import RecommendSkill, { IRecommendSkill } from '@common/contants/skill';
+import useUpdateResumeHook from '@src/container/resume/ResumeContent/useUpdateResumeHook';
 
 interface IProps {
   onClose: () => void;
 }
 function Skill({ onClose }: IProps) {
+  const updateResumeHook = useUpdateResumeHook();
   const skill: string = useSelector((state: any) => state.resumeModel.skill);
   return (
     <MyModal.Dialog
@@ -45,6 +47,7 @@ function Skill({ onClose }: IProps) {
                     }}
                     onClick={() => {
                       const value = `${skill}${skill ? '｜' : ''}${skill.label}`;
+                      updateResumeHook<string>('skill', value);
                     }}
                   >
                     {skill.label}
@@ -54,7 +57,9 @@ function Skill({ onClose }: IProps) {
             </div>
             <MyInput
               type="textarea"
-              onChange={(e) => {}}
+              onChange={(e) => {
+                updateResumeHook<string>('skill', e.target.value);
+              }}
               rows={5}
               value={skill}
               placeholder="例如 Vue、React"
